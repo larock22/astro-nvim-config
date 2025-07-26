@@ -1,4 +1,4 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+-- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- You can also add or configure plugins by creating files in this `plugins/` folder
 -- PLEASE REMOVE THE EXAMPLES YOU HAVE NO INTEREST IN BEFORE ENABLING THIS FILE
@@ -8,6 +8,56 @@ if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 return {
 
   -- == Examples of Adding Plugins ==
+
+  -- Command palette for cmdline
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+    opts = {
+      lsp = {
+        override = {
+          ["vim.lsp.util.convert_input_to_markdown_lines"] = false,
+          ["vim.lsp.util.stylize_markdown"] = false,
+          ["cmp.entry.get_documentation"] = false,
+        },
+      },
+      presets = {
+        bottom_search = false,
+        command_palette = true,
+        long_message_to_split = false,
+        inc_rename = false,
+        lsp_doc_border = false,
+      },
+      cmdline = {
+        enabled = true,
+        view = "cmdline_popup",
+      },
+      messages = { enabled = false },
+      popupmenu = { enabled = false },
+      notify = { enabled = false },
+    },
+  },
+
+  -- Solarized Dark theme
+  {
+    "maxmx03/solarized.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.o.termguicolors = true
+      vim.o.background = 'dark'
+      require("solarized").setup({
+        variant = "winter", -- "spring" | "summer" | "autumn" | "winter"
+        transparent = {
+          enabled = false,
+        },
+      })
+      vim.cmd.colorscheme 'solarized'
+    end,
+  },
 
   "andweeb/presence.nvim",
   {
