@@ -135,6 +135,35 @@ return {
     end,
   },
 
+  -- Neo-tree configuration to show hidden files
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    opts = {
+      filesystem = {
+        filtered_items = {
+          visible = true, -- This will show hidden files
+          hide_dotfiles = false,
+          hide_gitignored = false,
+          hide_hidden = false, -- only works on Windows for hidden files/directories
+          hide_by_name = {
+            -- you can add specific files to hide if needed
+            -- ".DS_Store",
+            -- "thumbs.db",
+          },
+          hide_by_pattern = {
+            -- you can add patterns to hide if needed
+            -- "*.meta",
+          },
+          always_show = { -- remains visible even if hidden by other settings
+            ".env",
+            ".gitignore",
+            ".github",
+          },
+        },
+      },
+    },
+  },
+
   -- Claude Code plugin
   {
     "coder/claudecode.nvim",
