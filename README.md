@@ -1,12 +1,50 @@
-# AstroNvim Template
+# My AstroNvim Configuration
 
-**NOTE:** This is for AstroNvim v5+
+This is my personal Neovim configuration based on [AstroNvim](https://github.com/AstroNvim/AstroNvim) v5+.
 
-A template for getting started with [AstroNvim](https://github.com/AstroNvim/AstroNvim)
+## Directory Structure
 
-## 🛠️ Installation
+```
+.
+├── lua/
+│   ├── plugins/        # Plugin configurations
+│   │   ├── astroui.lua # UI customizations
+│   │   └── user.lua    # Main plugin definitions
+│   └── user/          # User-specific configurations
+├── lazy-lock.json     # Plugin version lock file
+└── README.md          # This file
+```
 
-#### Make a backup of your current nvim and shared folder
+## Installed Plugins
+
+### Core Plugins
+
+- **[folke/noice.nvim](https://github.com/folke/noice.nvim)** - Command palette for cmdline with popup interface
+- **[maxmx03/solarized.nvim](https://github.com/maxmx03/solarized.nvim)** - Solarized Dark theme (winter variant)
+- **[ray-x/lsp_signature.nvim](https://github.com/ray-x/lsp_signature.nvim)** - LSP signature help during typing
+- **[coder/claudecode.nvim](https://github.com/coder/claudecode.nvim)** - Claude AI integration for code assistance
+
+### Modified Default Plugins
+
+- **[folke/snacks.nvim](https://github.com/folke/snacks.nvim)** - Custom AstroNvim dashboard header
+- **[L3MON4D3/LuaSnip](https://github.com/L3MON4D3/LuaSnip)** - Extended for JavaScript/React snippets
+- **[windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs)** - Custom rules for LaTeX
+
+### Disabled Plugins
+
+- **better-escape.nvim** - Disabled by default
+
+## Key Features
+
+- **Theme**: Solarized Dark with winter variant
+- **Command Interface**: Noice.nvim popup command palette
+- **AI Integration**: Claude Code for AI-assisted development
+- **LSP Enhancements**: Signature help on typing
+- **Custom Dashboard**: AstroNvim ASCII art header
+
+## Installation
+
+1. Backup your existing Neovim configuration:
 
 ```shell
 mv ~/.config/nvim ~/.config/nvim.bak
@@ -15,20 +53,16 @@ mv ~/.local/state/nvim ~/.local/state/nvim.bak
 mv ~/.cache/nvim ~/.cache/nvim.bak
 ```
 
-#### Create a new user repository from this template
-
-Press the "Use this template" button above to create a new repository to store your user configuration.
-
-You can also just clone this repository directly if you do not want to track your user configuration in GitHub.
-
-#### Clone the repository
+2. Clone this configuration:
 
 ```shell
-git clone https://github.com/<your_user>/<your_repository> ~/.config/nvim
+git clone https://github.com/larock22/astro-nvim-config.git ~/.config/nvim
 ```
 
-#### Start Neovim
+3. Start Neovim:
 
 ```shell
 nvim
 ```
+
+Plugins will automatically install on first launch.
