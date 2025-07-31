@@ -189,6 +189,8 @@ return {
       -- Diff management
       { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
       { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
+      -- Quick switch to ClaudeCode window
+      { "<leader>cc", "<cmd>ClaudeCodeFocus<cr>", desc = "Switch to Claude" },
     },
   },
 }
