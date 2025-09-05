@@ -66,3 +66,16 @@ nvim
 ```
 
 Plugins will automatically install on first launch.
+
+## Cheat Sheet
+
+### Search Commands
+
+- `<leader>ff` - Find files in current directory
+- `<leader>fw` - Live grep (search text in all files)
+- `<leader>fc` - Search for word under cursor
+- `<leader>fo` - Search recently opened files
+- `<leader>fg` - Find files in git repository
+- `/` - Search within Neo-tree file explorer
+- `:vimgrep /pattern/ **/*.lua` - Search pattern in all lua files
+- `:grep pattern **/*` - Use external grep

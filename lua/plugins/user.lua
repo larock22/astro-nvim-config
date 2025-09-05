@@ -197,4 +197,17 @@ return {
       { "<leader>cc", "<cmd>ClaudeCodeFocus<cr>", desc = "Switch to Claude" },
     },
   },
+
+  -- Custom search keybinding
+  {
+    "nvim-telescope/telescope.nvim",
+    opts = {
+      defaults = {
+        file_ignore_patterns = { "node_modules", ".git/" },
+      },
+    },
+    keys = {
+      { "<leader>ss", function() require("telescope.builtin").live_grep({ cwd = vim.fn.getcwd() }) end, desc = "Search entire directory" },
+    },
+  },
 }
