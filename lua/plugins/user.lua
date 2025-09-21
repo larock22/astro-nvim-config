@@ -47,21 +47,19 @@ return {
     },
   },
 
-  -- Solarized Dark theme
+  -- Dracula theme
   {
-    "maxmx03/solarized.nvim",
+    "Mofiqul/dracula.nvim",
     lazy = false,
     priority = 1000,
     config = function()
       vim.o.termguicolors = true
-      vim.o.background = 'dark'
-      require("solarized").setup({
-        variant = "winter", -- "spring" | "summer" | "autumn" | "winter"
-        transparent = {
-          enabled = false,
-        },
+      require("dracula").setup({
+        transparent_bg = false,
+        italic_comment = true,
+        lualine_bg_color = "#44475a",
       })
-      vim.cmd.colorscheme 'solarized'
+      vim.cmd.colorscheme 'dracula'
     end,
   },
 
