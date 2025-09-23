@@ -168,36 +168,7 @@ return {
     },
   },
 
-  -- Claude Code plugin
-  {
-    "coder/claudecode.nvim",
-    dependencies = { "folke/snacks.nvim" },
-    config = function()
-      require("claudecode").setup()
-    end,
-    cmd = { "ClaudeCode", "ClaudeCodeFocus", "ClaudeCodeAdd", "ClaudeCodeSend", "ClaudeCodeTreeAdd", "ClaudeCodeDiffAccept", "ClaudeCodeDiffDeny" },
-    keys = {
-      { "<leader>a", nil, desc = "AI/Claude Code" },
-      { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
-      { "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
-      { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
-      { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
-      { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
-      { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
-      {
-        "<leader>as",
-        "<cmd>ClaudeCodeTreeAdd<cr>",
-        desc = "Add file",
-        ft = { "NvimTree", "neo-tree", "oil" },
-      },
-      -- Diff management
-      { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
-      { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
-      -- Quick switch to ClaudeCode window
-      { "<leader>cc", "<cmd>ClaudeCodeFocus<cr>", desc = "Switch to Claude" },
-    },
-  },
-
+  
   -- Custom search keybinding
   {
     "nvim-telescope/telescope.nvim",
@@ -208,6 +179,23 @@ return {
     },
     keys = {
       { "<leader>ss", function() require("telescope.builtin").live_grep({ cwd = vim.fn.getcwd() }) end, desc = "Search entire directory" },
+    },
+  },
+
+  -- Toggle terminal
+  {
+    "akinsho/toggleterm.nvim",
+    version = "*",
+    cmd = "ToggleTerm",
+    keys = {
+      { "<leader>tt", "<cmd>ToggleTerm<cr>", desc = "Toggle Terminal" },
+    },
+    opts = {
+      size = 20,
+      direction = "float",
+      float_opts = {
+        border = "curved",
+      },
     },
   },
 }
