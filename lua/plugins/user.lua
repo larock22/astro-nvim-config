@@ -198,4 +198,12 @@ return {
       },
     },
   },
+
+  -- New file creation shortcut
+  {
+    "folke/which-key.nvim",
+    keys = {
+      { "<leader>nf", ":e ", desc = "New file" },
+    },
+  },
 }
