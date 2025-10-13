@@ -204,6 +204,7 @@ return {
     "folke/which-key.nvim",
     keys = {
       { "<leader>nf", ":e ", desc = "New file" },
+      { "qq", ":", desc = "Open command line", mode = "n" },
     },
   },
 }
