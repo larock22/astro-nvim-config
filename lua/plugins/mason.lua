@@ -14,6 +14,7 @@ return {
         -- install language servers
         "lua-language-server",
         "ruff",
+        "biome",
 
         -- install formatters
         "stylua",

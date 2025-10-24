@@ -31,6 +31,8 @@ return {
       disabled = { -- disable formatting capabilities for the listed language servers
         -- disable lua_ls formatting capability if you want to use StyLua to format your lua code
         -- "lua_ls",
+        "ts_ls", -- disable TypeScript formatting, using Biome instead
+        "tsserver", -- alternative name for TypeScript server
       },
       timeout_ms = 1000, -- default format timeout
       -- filter = function(client) -- fully override the default formatting function
@@ -39,7 +41,8 @@ return {
     },
     -- enable servers that you already have installed without mason
     servers = {
-      "ruff"
+      "ruff",
+      "biome",
     },
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
