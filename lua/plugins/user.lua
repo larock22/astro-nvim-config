@@ -63,6 +63,13 @@ return {
     end,
   },
 
+  -- Enhanced markdown preview (load after colorscheme)
+  {
+    "OXY2DEV/markview.nvim",
+    lazy = false,
+    ft = "markdown",
+  },
+
   {
     "ray-x/lsp_signature.nvim",
     event = "BufRead",

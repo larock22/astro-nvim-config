@@ -77,6 +77,24 @@ return {
         -- this is useful for naming menus
         -- ["<Leader>b"] = { desc = "Buffers" },
 
+        -- Window splits
+        ["<Leader>wv"] = { "<cmd>vsplit<cr>", desc = "Vertical split" },
+        ["<Leader>ws"] = { "<cmd>split<cr>", desc = "Horizontal split" },
+        ["<Leader>wf"] = {
+          function()
+            vim.cmd("vsplit")
+            require("telescope.builtin").find_files()
+          end,
+          desc = "Vertical split + find file"
+        },
+        ["<Leader>wh"] = {
+          function()
+            vim.cmd("split")
+            require("telescope.builtin").find_files()
+          end,
+          desc = "Horizontal split + find file"
+        },
+
         -- setting a mapping to false will disable it
         -- ["<C-S>"] = false,
       },
