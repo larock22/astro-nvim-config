@@ -185,7 +185,7 @@ return {
       },
     },
     keys = {
-      { "<leader>ss", function() require("telescope.builtin").live_grep({ cwd = vim.fn.getcwd() }) end, desc = "Search entire directory" },
+      { "ss", function() require("telescope.builtin").live_grep({ cwd = vim.fn.getcwd() }) end, desc = "Search entire directory" },
     },
   },
 
@@ -193,16 +193,21 @@ return {
   {
     "akinsho/toggleterm.nvim",
     version = "*",
-    cmd = "ToggleTerm",
     keys = {
-      { "<leader>tt", "<cmd>ToggleTerm<cr>", desc = "Toggle Terminal" },
+      { "tt", "<cmd>ToggleTerm<cr>", desc = "Toggle Terminal", mode = { "n", "t" } },
+      { "<Esc>", [[<C-\><C-n>]], mode = "t", desc = "Exit terminal mode" },
     },
     opts = {
       size = 20,
       direction = "float",
+      start_in_insert = true,
+      persist_mode = true,
       float_opts = {
         border = "curved",
       },
+      on_open = function()
+        vim.cmd("startinsert!")
+      end,
     },
   },
 
