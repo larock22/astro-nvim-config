@@ -1,7 +1,13 @@
 return {
   {
     "okuuva/auto-save.nvim",
-    lazy = false,        -- load on startup
-    opts = { enabled = true },
+    event = "InsertLeave", -- load when leaving insert mode instead of startup
+    opts = {
+      enabled = true,
+      trigger_events = {
+        immediate_save = { "BufLeave", "FocusLost" },
+        defer_save = { "InsertLeave", "TextChanged" },
+      },
+    },
   },
 }

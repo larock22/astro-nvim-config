@@ -1,4 +1,4 @@
--- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+-- WARN: USER PLUGINS FILE IS NOW ACTIVE
 
 -- You can also add or configure plugins by creating files in this `plugins/` folder
 -- PLEASE REMOVE THE EXAMPLES YOU HAVE NO INTEREST IN BEFORE ENABLING THIS FILE
@@ -189,6 +189,16 @@ return {
     },
   },
 
+  -- Timerly plugin for pomodoro timer
+  {
+    "nvzone/timerly",
+    dependencies = { "nvzone/volt" },
+    cmd = "TimerlyToggle",
+    keys = {
+      { "<leader>pt", "<cmd>TimerlyToggle<cr>", desc = "Toggle Pomodoro Timer" },
+    },
+  },
+
   -- Toggle terminal
   {
     "akinsho/toggleterm.nvim",
@@ -215,7 +225,7 @@ return {
   {
     "folke/which-key.nvim",
     keys = {
-      { "<leader>nf", ":e ", desc = "New file" },
+      { "<leader>nf", "<cmd>enew<cr>", desc = "New file" },
       { "qq", ":", desc = "Open command line", mode = "n" },
     },
   },
