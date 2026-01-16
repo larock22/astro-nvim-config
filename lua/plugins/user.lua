@@ -185,7 +185,7 @@ return {
       },
     },
     keys = {
-      { "ss", function() require("telescope.builtin").live_grep({ cwd = vim.fn.getcwd() }) end, desc = "Search entire directory" },
+      { "ss", function() require("telescope.builtin").live_grep({ cwd = vim.fn.getcwd(), additional_args = { "--fixed-strings" } }) end, desc = "Search entire directory (literal)" },
     },
   },
 
