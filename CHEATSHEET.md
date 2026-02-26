@@ -1,6 +1,13 @@
 # Neovim Daily Cheat Sheet
 
+## Core Movement (Read/Normal Mode)
+
+- Use `h/j/k/l` to move left/down/up/right in code.
+- Press `i` to enter insert mode.
+- Press `<Esc>` to return to normal mode, move, then continue editing.
+
 ## Git Diff Shortcuts (delta)
+
 - `gd` -> opens `git diff` in a terminal buffer (uses your git pager, `delta`).
 - `gdm` -> opens `git diff <base>...HEAD` where base is first found of:
   - `main`
@@ -9,6 +16,7 @@
   - `origin/master`
 
 ## Window Jumping (Arrows + j/k)
+
 - Arrow keys switch windows in normal/insert/terminal modes:
   - `<Left>` -> left window
   - `<Down>` -> lower window
@@ -19,23 +27,17 @@
 - In terminal mode, arrows auto-exit terminal insert and jump windows.
 
 ## File Tree + Editor Flow
+
 - `<leader>e` toggles Neo-tree.
 - In Neo-tree, use `j/k` to move up/down the file list.
 - Use `<Right>` to jump from tree to editor window.
 
 ## Search
+
 - `<leader>ff` -> find files.
 - `ss` -> literal live grep in current working directory.
 
 ## Terminal
+
 - `tt` -> toggle floating terminal.
 - `<Esc>` in terminal -> leave terminal insert mode.
-
-## Leader Keys
-- Leader: `<Space>`
-- Local leader: `,`
-
-## Daily Dev Reminder
-- Shell aliases (like `gst`) live in bash/zsh, not Neovim keymaps.
-- Neovim keymaps must call plugin commands or terminal commands directly.
-
