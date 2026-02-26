@@ -227,6 +227,31 @@ return {
     keys = {
       { "<leader>nf", "<cmd>enew<cr>", desc = "New file" },
       { "qq", ":", desc = "Open command line", mode = "n" },
+      { "gd", "<cmd>terminal git diff<cr>", desc = "Git diff (delta)", mode = "n" },
+      {
+        "gdm",
+        function()
+          local targets = { "main", "master", "origin/main", "origin/master" }
+          local base = nil
+
+          for _, target in ipairs(targets) do
+            vim.fn.system({ "git", "rev-parse", "--verify", "--quiet", target })
+            if vim.v.shell_error == 0 then
+              base = target
+              break
+            end
+          end
+
+          if not base then
+            vim.notify("Could not find main/master branch", vim.log.levels.WARN)
+            return
+          end
+
+          vim.cmd("terminal git diff " .. base .. "...HEAD")
+        end,
+        desc = "Git diff vs main/master",
+        mode = "n",
+      },
     },
   },
 }

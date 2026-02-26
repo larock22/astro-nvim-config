@@ -1,25 +1,41 @@
-# Neovim Keybindings Cheat Sheet
+# Neovim Daily Cheat Sheet
 
-## Search & Navigation
-- `<leader>ff` - Fuzzy find files ( Telescope file browser )
-- `<leader>ss` - Search entire codebase with grep ( live grep across all files )
-- `<leader>fw` - Search current word under cursor
-- `<leader>fW` - Search current word in all open buffers
-- `<leader>sw` - Search for word across all files
-- `<leader>sW` - Search for word across all files with additional context
+## Git Diff Shortcuts (delta)
+- `gd` -> opens `git diff` in a terminal buffer (uses your git pager, `delta`).
+- `gdm` -> opens `git diff <base>...HEAD` where base is first found of:
+  - `main`
+  - `master`
+  - `origin/main`
+  - `origin/master`
 
-## File Explorer
-- `<leader>e` - Toggle Neo-tree file explorer
-- Shows hidden files by default (.gitignore, .env, .github)
+## Window Jumping (Arrows + j/k)
+- Arrow keys switch windows in normal/insert/terminal modes:
+  - `<Left>` -> left window
+  - `<Down>` -> lower window
+  - `<Up>` -> upper window
+  - `<Right>` -> right window
+- `Ctrl-w h/j/k/l` also switches windows (left/down/up/right).
+- `Ctrl-w j` and `Ctrl-w k` are the `j/k` way to move down/up windows.
+- In terminal mode, arrows auto-exit terminal insert and jump windows.
+
+## File Tree + Editor Flow
+- `<leader>e` toggles Neo-tree.
+- In Neo-tree, use `j/k` to move up/down the file list.
+- Use `<Right>` to jump from tree to editor window.
+
+## Search
+- `<leader>ff` -> find files.
+- `ss` -> literal live grep in current working directory.
 
 ## Terminal
-- `<leader>tt` - Toggle terminal (floating window)
-- `:term` - Open terminal in split
-- `:!command` - Run shell command
+- `tt` -> toggle floating terminal.
+- `<Esc>` in terminal -> leave terminal insert mode.
 
-## Other Leader Mappings
-- Leader key: `<Space>`
+## Leader Keys
+- Leader: `<Space>`
 - Local leader: `,`
 
-
+## Daily Dev Reminder
+- Shell aliases (like `gst`) live in bash/zsh, not Neovim keymaps.
+- Neovim keymaps must call plugin commands or terminal commands directly.
 
