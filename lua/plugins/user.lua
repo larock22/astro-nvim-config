@@ -47,19 +47,19 @@ return {
     },
   },
 
-  -- Dracula theme
+  -- Cyberdream theme
   {
-    "Mofiqul/dracula.nvim",
+    "scottmckendry/cyberdream.nvim",
     lazy = false,
     priority = 1000,
-    config = function()
+    opts = {
+      transparent = false,
+      italic_comments = true,
+    },
+    config = function(_, opts)
       vim.o.termguicolors = true
-      require("dracula").setup({
-        transparent_bg = false,
-        italic_comment = true,
-        lualine_bg_color = "#44475a",
-      })
-      vim.cmd.colorscheme 'dracula'
+      require("cyberdream").setup(opts)
+      vim.cmd.colorscheme "cyberdream"
     end,
   },
 
