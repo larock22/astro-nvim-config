@@ -210,13 +210,15 @@ return {
     opts = {
       size = 20,
       direction = "float",
-      start_in_insert = true,
-      persist_mode = true,
+      start_in_insert = false,
+      persist_mode = false,
       float_opts = {
         border = "curved",
       },
-      on_open = function()
-        vim.cmd("startinsert!")
+      on_create = function(term)
+        local opts = { buffer = term.bufnr }
+        vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], opts)
+        vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], opts)
       end,
     },
   },
