@@ -95,27 +95,11 @@ return {
           desc = "Horizontal split + find file"
         },
 
-        -- window navigation with arrow keys
-        ["<Left>"] = { "<C-w>h", desc = "Focus left window" },
-        ["<Down>"] = { "<C-w>j", desc = "Focus lower window" },
-        ["<Up>"] = { "<C-w>k", desc = "Focus upper window" },
-        ["<Right>"] = { "<C-w>l", desc = "Focus right window" },
-
         -- setting a mapping to false will disable it
         -- ["<C-S>"] = false,
       },
-      i = {
-        ["<Left>"] = { "<Esc><C-w>h", desc = "Focus left window" },
-        ["<Down>"] = { "<Esc><C-w>j", desc = "Focus lower window" },
-        ["<Up>"] = { "<Esc><C-w>k", desc = "Focus upper window" },
-        ["<Right>"] = { "<Esc><C-w>l", desc = "Focus right window" },
-      },
-      t = {
-        ["<Left>"] = { [[<C-\><C-n><C-w>h]], desc = "Focus left window" },
-        ["<Down>"] = { [[<C-\><C-n><C-w>j]], desc = "Focus lower window" },
-        ["<Up>"] = { [[<C-\><C-n><C-w>k]], desc = "Focus upper window" },
-        ["<Right>"] = { [[<C-\><C-n><C-w>l]], desc = "Focus right window" },
-      },
+      i = {},
+      t = {},
     },
   },
 }
