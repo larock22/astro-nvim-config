@@ -39,5 +39,5 @@
 
 ## Terminal
 
-- `tt` -> toggle floating terminal.
+- `<leader>tt` -> toggle floating terminal.
 - `<Esc>` in terminal -> leave terminal insert mode.
