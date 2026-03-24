@@ -204,21 +204,29 @@ return {
     "akinsho/toggleterm.nvim",
     version = "*",
     keys = {
-      { "<leader>tt", "<cmd>ToggleTerm<cr>", desc = "Toggle Terminal", mode = "n" },
-      { "<Esc>", [[<C-\><C-n>]], mode = "t", desc = "Exit terminal mode" },
+      { "<leader>tt", "<cmd>ToggleTerm direction=float<cr>", desc = "Toggle Floating Terminal", mode = "n" },
+      { "<F12>", "<cmd>ToggleTerm direction=float<cr>", desc = "Toggle Floating Terminal", mode = "n" },
+      { "<F12>", [[<C-\><C-n><cmd>ToggleTerm direction=float<cr>]], desc = "Toggle Floating Terminal", mode = "t" },
+      { "<F11>", [[<C-\><C-n>]], mode = "t", desc = "Terminal normal mode" },
     },
     opts = {
       size = 20,
       direction = "float",
-      start_in_insert = false,
-      persist_mode = false,
+      start_in_insert = true,
+      persist_mode = true,
       float_opts = {
         border = "curved",
       },
+      on_open = function()
+        vim.cmd "startinsert!"
+      end,
       on_create = function(term)
-        local opts = { buffer = term.bufnr }
-        vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], opts)
-        vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], opts)
+        vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
+          buffer = term.bufnr,
+          callback = function()
+            if vim.bo[term.bufnr].buftype == "terminal" then vim.cmd "startinsert!" end
+          end,
+        })
       end,
     },
   },
