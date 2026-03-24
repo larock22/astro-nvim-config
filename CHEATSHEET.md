@@ -6,14 +6,22 @@
 - Press `i` to enter insert mode.
 - Press `<Esc>` to return to normal mode, move, then continue editing.
 
-## Git Diff Shortcuts (delta)
+## Git Diff Shortcuts
 
-- `gd` -> opens `git diff` in a terminal buffer (uses your git pager, `delta`).
-- `gdm` -> opens `git diff <base>...HEAD` where base is first found of:
+- `<leader>gd` -> opens side-by-side Diffview vs `<base>` (default branch compare).
+- `<leader>gm` -> opens `git diff <base>` in a scratch diff buffer.
+- `<leader>gw` -> opens working tree `git diff` in a scratch buffer.
+- `<leader>gq` -> closes Diffview.
+- `<base>` is first found of:
   - `main`
   - `master`
   - `origin/main`
   - `origin/master`
+- Includes both uncommitted changes and committed branch differences vs `<base>`.
+- `:GitDiff` -> scratch diff vs `<base>`.
+- `:GitDiffBase` -> same as `:GitDiff`.
+- `:GitDiffView` -> side-by-side Diffview vs `<base>`.
+- Press `q` in the diff buffer to close it.
 
 ## Window Jumping (Arrows + j/k)
 
