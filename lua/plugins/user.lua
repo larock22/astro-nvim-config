@@ -152,9 +152,9 @@ return {
     opts = {
       filesystem = {
         filtered_items = {
-          visible = true, -- This will show hidden files
+          visible = false, -- hide filtered items instead of dimming them
           hide_dotfiles = false,
-          hide_gitignored = false,
+          hide_gitignored = true,
           hide_hidden = false, -- only works on Windows for hidden files/directories
           hide_by_name = {
             -- you can add specific files to hide if needed
@@ -167,7 +167,6 @@ return {
           },
           always_show = { -- remains visible even if hidden by other settings
             ".env",
-            ".gitignore",
             ".github",
           },
         },
@@ -204,39 +203,23 @@ return {
     "akinsho/toggleterm.nvim",
     version = "*",
     keys = {
-      { "<leader>tt", "<cmd>ToggleTerm direction=float<cr>", desc = "Toggle Floating Terminal", mode = "n" },
-      { "<F12>", "<cmd>ToggleTerm direction=float<cr>", desc = "Toggle Floating Terminal", mode = "n" },
-      { "<F12>", [[<C-\><C-n><cmd>ToggleTerm direction=float<cr>]], desc = "Toggle Floating Terminal", mode = "t" },
-      { "<F11>", [[<C-\><C-n>]], mode = "t", desc = "Terminal normal mode" },
+      { "<leader>tt", "<cmd>ToggleTerm<cr>", desc = "Toggle Terminal", mode = "n" },
+      { "<Esc>", [[<C-\><C-n>]], mode = "t", desc = "Exit terminal mode" },
     },
     opts = {
       size = 20,
       direction = "float",
-      start_in_insert = true,
-      persist_mode = true,
+      start_in_insert = false,
+      persist_mode = false,
       float_opts = {
         border = "curved",
       },
-      on_open = function()
-        vim.cmd "startinsert!"
-      end,
       on_create = function(term)
-        vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
-          buffer = term.bufnr,
-          callback = function()
-            if vim.bo[term.bufnr].buftype == "terminal" then vim.cmd "startinsert!" end
-          end,
-        })
+        local opts = { buffer = term.bufnr }
+        vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], opts)
+        vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], opts)
       end,
     },
-  },
-
-  -- Side-by-side git diff UI
-  {
-    "sindrets/diffview.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFileHistory" },
-    opts = {},
   },
 
   -- New file creation shortcut
@@ -245,6 +228,31 @@ return {
     keys = {
       { "<leader>nf", "<cmd>enew<cr>", desc = "New file" },
       { "qq", ":", desc = "Open command line", mode = "n" },
+      { "gd", "<cmd>terminal git diff<cr>", desc = "Git diff (delta)", mode = "n" },
+      {
+        "gdm",
+        function()
+          local targets = { "main", "master", "origin/main", "origin/master" }
+          local base = nil
+
+          for _, target in ipairs(targets) do
+            vim.fn.system({ "git", "rev-parse", "--verify", "--quiet", target })
+            if vim.v.shell_error == 0 then
+              base = target
+              break
+            end
+          end
+
+          if not base then
+            vim.notify("Could not find main/master branch", vim.log.levels.WARN)
+            return
+          end
+
+          vim.cmd("terminal git diff " .. base .. "...HEAD")
+        end,
+        desc = "Git diff vs main/master",
+        mode = "n",
+      },
     },
   },
 }
